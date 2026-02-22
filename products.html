@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwiftCart | All Products</title>
+
+    <!-- TailwindCss and DaisyUI cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- FontAwesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Navbar section -->
+    <header>
+      <div
+        class="navbar flex justify-between items-center bg-white/90 backdrop-blur-md fixed top-0 left-0 w-full z-50 shadow-sm px-8 lg:px-20 py-4"
+      >
+        <!-- Logo -->
+        <div>
+          <a href="index.html" class="text-2xl font-bold text-indigo-600">
+            SwiftCart
+          </a>
+        </div>
+
+        <!-- Dropdown Menubar -->
+        <div class="dropdown">
+          <!-- Menubar -->
+          <div
+            tabindex="0"
+            role="button"
+            class="text-2xl text-indigo-600 focus:outline-none mr-2 lg:hidden"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </div>
+          <ul
+            tabindex="-1"
+            class="menu menu-sm font-medium text-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <a
+                href="index.html"
+                class="nav-link hover:text-indigo-600 transition duration-300"
+              >
+                Home
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="products.html"
+                class="nav-link hover:text-indigo-600 transition duration-300"
+              >
+                Products
+              </a>
+            </li>
+            <li>
+              <a
+                href="#about-section"
+                class="nav-link hover:text-indigo-600 transition duration-300"
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+                href="#footer-section"
+                class="nav-link hover:text-indigo-600 transition duration-300"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Nav Links -->
+        <div
+          id="nav-menu"
+          class="hidden bg-white shadow-lg rounded-xl p-6 space-y-4 md:static md:flex md:flex-row md:shadow-none md:bg-transparent md:p-0 md:space-y-0 md:gap-10 font-medium"
+        >
+          <a
+            href="index.html"
+            class="nav-link hover:text-indigo-600 transition duration-300"
+          >
+            Home
+          </a>
+
+          <a
+            href="products.html"
+            class="nav-link hover:text-indigo-600 transition duration-300"
+          >
+            Products
+          </a>
+
+          <a
+            href="#about-section"
+            class="nav-link hover:text-indigo-600 transition duration-300"
+          >
+            About
+          </a>
+
+          <a
+            href="#footer-section"
+            class="nav-link hover:text-indigo-600 transition duration-300"
+          >
+            Contact
+          </a>
+        </div>
+
+        <!-- CART DROPDOWN -->
+        <div class="dropdown dropdown-end">
+          <label
+            tabindex="0"
+            class="btn btn-ghost btn-circle ml-4 indicator hover:bg-indigo-50 transition"
+          >
+            <!-- Cart Icon -->
+            <i class="fa-solid fa-bag-shopping text-2xl text-indigo-600"></i>
+
+            <!-- Cart Count -->
+            <span
+              id="cart-count"
+              class="badge badge-sm indicator-item bg-indigo-600 text-white border-none"
+            >
+              0
+            </span>
+          </label>
+
+          <!-- Dropdown -->
+          <div
+            tabindex="0"
+            class="dropdown-content mt-4 w-[95vw] max-w-md md:w-96 right-0 bg-white rounded-3xl shadow-2xl border border-gray-100"
+          >
+            <div class="p-6">
+              <!-- Header -->
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="font-bold text-lg flex items-center gap-2">
+                  <i class="fa-solid fa-bag-shopping text-indigo-600"></i>
+                  Shopping Cart
+                </h3>
+
+                <button
+                  onclick="clearCart()"
+                  class="text-sm text-red-500 hover:text-red-600 flex items-center gap-1"
+                >
+                  <i class="fa-regular fa-trash-can"></i>
+                  Clear
+                </button>
+              </div>
+
+              <!-- Cart Items -->
+              <div
+                id="cart-items"
+                class="max-h-72 overflow-y-auto space-y-4 pr-2"
+              >
+                <!-- Sample Cart Item Card -->
+                <div class="flex gap-4 bg-gray-50 p-4 rounded-2xl shadow-sm">
+                  <!-- Product Image -->
+                  <img
+                    src="https://via.placeholder.com/80"
+                    class="w-16 h-16 rounded-xl object-cover"
+                  />
+
+                  <!-- Product Info -->
+                  <div class="flex-1">
+                    <h4 class="font-semibold text-gray-800 text-sm">
+                      Product Name
+                    </h4>
+                    <p class="text-indigo-600 font-bold text-sm mt-1">$49.00</p>
+
+                    <!-- Quantity Controls -->
+                    <div class="flex items-center gap-3 mt-3">
+                      <button
+                        class="w-8 h-8 flex items-center justify-center bg-white border rounded-lg shadow hover:bg-gray-100"
+                      >
+                        <i class="fa-solid fa-minus text-sm"></i>
+                      </button>
+
+                      <span class="font-semibold text-gray-700"> 1 </span>
+
+                      <button
+                        class="w-8 h-8 flex items-center justify-center bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700"
+                      >
+                        <i class="fa-solid fa-plus text-sm"></i>
+                      </button>
+
+                      <!-- Remove Button -->
+                      <button class="ml-auto text-red-400 hover:text-red-600">
+                        <i class="fa-solid fa-xmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Footer -->
+              <div class="border-t pt-5 mt-6">
+                <div class="flex justify-between items-center mb-4">
+                  <span
+                    class="font-medium text-gray-600 flex items-center gap-2"
+                  >
+                    <i class="fa-solid fa-receipt"></i>
+                    Total
+                  </span>
+
+                  <span
+                    class="font-bold text-indigo-600 text-xl"
+                    id="cart-total"
+                  >
+                    $49.00
+                  </span>
+                </div>
+
+                <button
+                  class="w-full py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-2xl font-semibold shadow-md hover:opacity-95 transition flex items-center justify-center gap-2"
+                >
+                  <i class="fa-solid fa-credit-card"></i>
+                  Proceed to Checkout
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Categories Section -->
+    <section class="py-10 w-11/12 mx-auto px-8 mt-8">
+      <h2 class="text-2xl font-bold mb-6">Categories</h2>
+      <div id="category-container" class="flex flex-wrap gap-4"></div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="px-8 pb-20 w-11/12 mx-auto">
+      <div
+        id="product-container"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+      ></div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer
+      id="footer-section"
+      class="bg-gray-900 text-gray-300 mt-20 px-6 md:px-16 pt-16 pb-8"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div>
+          <h2 class="text-2xl font-bold text-indigo-600 mb-4">SwiftCart</h2>
+          <p class="text-sm leading-relaxed text-gray-400">
+            Your one-stop shop for premium fashion and lifestyle products.
+            Discover quality, comfort, and style in one place.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-gray-400">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="#" class="hover:text-indigo-400 transition">Home</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-indigo-400 transition">Products</a>
+            </li>
+            <li>
+              <a href="#about-section" class="hover:text-indigo-400 transition"
+                >About</a
+              >
+            </li>
+            <li>
+              <a href="#footer-section" class="hover:text-indigo-400 transition"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-gray-400">Support</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="#" class="hover:text-indigo-400 transition">FAQ</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-indigo-400 transition">Shipping</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-indigo-400 transition">Returns</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-indigo-400 transition"
+                >Privacy Policy</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-gray-400">
+            SUBSCRIBE TO OUR NEWSLETTER
+          </h3>
+          <h3 class="text-sm font-medium mb-4 text-gray-400">
+            The latest news, article , and resources <br />
+            sent to your inbox weekly.
+          </h3>
+          <div class="flex items-center bg-white rounded-lg overflow-hidden">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="w-full px-4 py-2 text-sm text-gray-700 focus:outline-none border-none"
+            />
+            <button
+              class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2.5 text-sm font-medium transition"
+            >
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-600 my-8"></div>
+      <div
+        class="flex flex-col md:flex-row items-center justify-between text-sm text-gray-400"
+      >
+        <p>© 2025 SwiftCart, Inc. All rights reserved.</p>
+        <div class="flex space-x-5 mt-4 md:mt-0 text-lg">
+          <a href="#" class="hover:text-indigo-400 transition"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="#" class="hover:text-indigo-400 transition"
+            ><i class="fa-brands fa-twitter"></i
+          ></a>
+          <a href="#" class="hover:text-indigo-400 transition"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="#" class="hover:text-indigo-400 transition"
+            ><i class="fa-brands fa-linkedin-in"></i
+          ></a>
+          <a href="#" class="hover:text-indigo-400 transition"
+            ><i class="fa-regular fa-envelope"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+    <script src="./index.js"></script>
+  </body>
+</html>
