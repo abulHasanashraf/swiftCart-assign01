@@ -35,18 +35,60 @@
           </a>
         </div>
 
-        <!-- Hamburger Button (Mobile Only) -->
-        <button
-          id="menu-btn"
-          class="md:hidden text-2xl text-indigo-600 focus:outline-none"
-        >
-          <i class="fa-solid fa-bars"></i>
-        </button>
+        <!-- Dropdown Menubar -->
+        <div class="dropdown">
+          <!-- Menubar -->
+          <div
+            tabindex="0"
+            role="button"
+            class="text-2xl text-indigo-600 focus:outline-none mr-2 lg:hidden"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </div>
+          <ul
+            tabindex="-1"
+            class="menu menu-sm font-medium text-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <a
+                href="index.html"
+                class="nav-link hover:text-indigo-600 transition duration-300"
+              >
+                Home
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="products.html"
+                class="nav-link hover:text-indigo-600 transition duration-300"
+              >
+                Products
+              </a>
+            </li>
+            <li>
+              <a
+                href="#about-section"
+                class="nav-link hover:text-indigo-600 transition duration-300"
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+                href="#footer-section"
+                class="nav-link hover:text-indigo-600 transition duration-300"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
 
         <!-- Nav Links -->
         <div
           id="nav-menu"
-          class="hidden flex-col absolute top-20 right-8 bg-white shadow-lg rounded-xl p-6 space-y-4 md:static md:flex md:flex-row md:shadow-none md:bg-transparent md:p-0 md:space-y-0 md:gap-10 font-medium"
+          class="hidden bg-white shadow-lg rounded-xl p-6 space-y-4 md:static md:flex md:flex-row md:shadow-none md:bg-transparent md:p-0 md:space-y-0 md:gap-10 font-medium"
         >
           <a
             href="index.html"
@@ -331,13 +373,26 @@
       </div>
     </div>
 
+    <!-- Trending Section -->
+    <section class="py-24 px-8 lg:px-20">
+      <h2 class="text-3xl font-bold mb-12">Trending Now</h2>
+      <div
+        id="trending-container"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+      ></div>
+    </section>
+
     <!-- Footer Section -->
-    <footer id="footer-section" class="bg-gray-900 text-gray-300 px-6 md:px-16 pt-16 pb-8">
+    <footer
+      id="footer-section"
+      class="bg-gray-900 text-gray-300 px-6 md:px-16 pt-16 pb-8"
+    >
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <div>
           <h2 class="text-2xl font-bold text-indigo-600 mb-4">SwiftCart</h2>
           <p class="text-sm leading-relaxed text-gray-400">
-            Your one-stop shop for premium fashion and lifestyle products. Discover quality, comfort, and style in one place.
+            Your one-stop shop for premium fashion and lifestyle products.
+            Discover quality, comfort, and style in one place.
           </p>
         </div>
         <div>
@@ -350,10 +405,14 @@
               <a href="#" class="hover:text-indigo-400 transition">Products</a>
             </li>
             <li>
-              <a href="#about-section" class="hover:text-indigo-400 transition">About</a>
+              <a href="#about-section" class="hover:text-indigo-400 transition"
+                >About</a
+              >
             </li>
             <li>
-              <a href="#footer-section" class="hover:text-indigo-400 transition">Contact</a>
+              <a href="#footer-section" class="hover:text-indigo-400 transition"
+                >Contact</a
+              >
             </li>
           </ul>
         </div>
@@ -377,8 +436,13 @@
           </ul>
         </div>
         <div>
-          <h3 class="text-lg font-semibold mb-4 text-gray-400">SUBSCRIBE TO OUR NEWSLETTER</h3>
-          <h3 class="text-sm font-medium mb-4 text-gray-400">The latest news, article , and resources <br> sent to your inbox weekly.</h3>
+          <h3 class="text-lg font-semibold mb-4 text-gray-400">
+            SUBSCRIBE TO OUR NEWSLETTER
+          </h3>
+          <h3 class="text-sm font-medium mb-4 text-gray-400">
+            The latest news, article , and resources <br />
+            sent to your inbox weekly.
+          </h3>
           <div class="flex items-center bg-white rounded-lg overflow-hidden">
             <input
               type="email"
@@ -417,5 +481,6 @@
         </div>
       </div>
     </footer>
+    <script src="./index.js"></script>
   </body>
 </html>
